@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add New Subject</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    display:flex;
+    min-height:100vh;
+    background:#d7edf8;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:250px;
+    background:#0f4c81;
+    color:white;
+}
+
+.logo{
+    padding:25px;
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+.menu{
+    list-style:none;
+    padding:20px 0;
+}
+
+.menu li{
+    padding:18px 25px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.menu li:hover{
+    background:#1a5c96;
+}
+
+/* Main Content */
+
+.main-content{
+    flex:1;
+    padding:40px;
+}
+
+.title{
+    font-size:50px;
+    color:#0f4c81;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+.card{
+    background:white;
+    width:500px;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#333;
+}
+
+.card input[type="text"],
+.card input[type="date"]{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+}
+
+.priority{
+    margin-bottom:15px;
+}
+
+.priority label{
+    display:block;
+    margin:10px 0;
+    font-weight:normal;
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.add-btn{
+    background:#184a92;
+    color:white;
+}
+
+.submit-btn{
+    background:#28a745;
+    color:white;
+}
+
+.submit-btn:hover{
+    background:#218838;
+}
+
+.add-btn:hover{
+    background:#103a74;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        📚 Smart Study Planner
+    </div>
+
+    <ul class="menu">
+        <li onclick="location.href='dash.html'">🏠 Dashboard</li>
+        <li onclick="location.href='add.html'">📖 Subjects</li>
+        <li onclick="location.href='page.html'">📝 Study Plan</li>
+        <li onclick="location.href='studysession.html'">⏱️ Study Session</li>
+        <li onclick="location.href='progresstraker.html'">📈 Progress</li>
+        <li onclick="location.href='profilepage.html'">👤 Profile</li>
+        <li onclick="location.href='logout_page.html'">🚪 Logout</li>
+    </ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main-content">
+
+    <div class="title">Add New Subject</div>
+
+    <div class="card">
+
+        <label>Subject Name</label>
+        <input type="text" placeholder="Enter subject name">
+
+        <label>Priority</label>
+
+        <div class="priority">
+            <label><input type="radio" name="p"> High</label>
+            <label><input type="radio" name="p"> Medium</label>
+            <label><input type="radio" name="p"> Low</label>
+        </div>
+
+        <label>Deadline Date</label>
+        <input type="date">
+
+        <button class="btn add-btn">
+            ➕ Add Subject
+        </button>
+
+        <button class="btn submit-btn"
+                onclick="location.href='subject.html'">
+            ✅ Submit
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+```

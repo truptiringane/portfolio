@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Study Planner - Generate Plan</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#d8eef7;
+    padding:30px;
+}
+
+/* Container */
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:#ffffff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#0f4c81;
+    margin-bottom:25px;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+th{
+    background:#0f4c81;
+    color:white;
+    padding:15px;
+    font-size:16px;
+}
+
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+    background:#f5f9fc;
+}
+
+/* Priority Styles */
+.priority{
+    padding:6px 15px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.high{
+    background:#ffd6d6;
+    color:#d60000;
+}
+
+.medium{
+    background:#fff3c4;
+    color:#996600;
+}
+
+.low{
+    background:#d9f7d9;
+    color:#008000;
+}
+
+/* Status */
+.pending{
+    color:#ff9800;
+    font-weight:bold;
+}
+
+.progress{
+    color:#2196f3;
+    font-weight:bold;
+}
+
+.completed{
+    color:#28a745;
+    font-weight:bold;
+}
+
+/* Button */
+.btn-container{
+    text-align:center;
+    margin-top:30px;
+}
+
+.btn{
+    background:#0f4c81;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#08355a;
+    transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📚 Generated Study Plan</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Subject Name</th>
+                <th>Priority</th>
+                <th>Target Completion Date</th>
+                <th>Required Study Hours</th>
+                <th>Daily Study Hours</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="planBody">
+        </tbody>
+    </table>
+
+    <!-- Button Below Table -->
+    <div class="btn-container">
+        <button class="btn" onclick="generatePlan()">
+            Generate New Plan
+        </button>
+    </div>
+
+</div>
+
+<script>
+
+function generatePlan(){
+
+    const subjects = [
+        "DBMS",
+        "OOP",
+        "DSA",
+        "Operating System",
+        "Computer Networks",
+        "Java Programming",
+        "Python Programming",
+        "Mathematics",
+        "Web Development",
+        "Software Engineering"
+    ];
+
+    const priorities = ["High","Medium","Low"];
+    const statuses = ["Pending","In Progress","Completed"];
+
+    let table = document.getElementById("planBody");
+    table.innerHTML = "";
+
+    subjects.sort(() => Math.random() - 0.5);
+
+    let selectedSubjects = subjects.slice(0,5);
+
+    selectedSubjects.forEach(subject => {
+
+        let priority =
+        priorities[Math.floor(Math.random()*priorities.length)];
+
+        let requiredHours =
+        Math.floor(Math.random()*11)+5;
+
+        let dailyHours =
+        (Math.random()*3+1).toFixed(1);
+
+        let status =
+        statuses[Math.floor(Math.random()*statuses.length)];
+
+        let futureDate = new Date();
+        futureDate.setDate(
+            futureDate.getDate() +
+            Math.floor(Math.random()*30)+1
+        );
+
+        let targetDate =
+        futureDate.toLocaleDateString();
+
+        let priorityClass = "";
+
+        if(priority === "High"){
+            priorityClass = "high";
+        }
+        else if(priority === "Medium"){
+            priorityClass = "medium";
+        }
+        else{
+            priorityClass = "low";
+        }
+
+        let statusClass = "";
+
+        if(status === "Pending"){
+            statusClass = "pending";
+        }
+        else if(status === "In Progress"){
+            statusClass = "progress";
+        }
+        else{
+            statusClass = "completed";
+        }
+
+        table.innerHTML += `
+        <tr>
+            <td>${subject}</td>
+            <td>
+                <span class="priority ${priorityClass}">
+                    ${priority}
+                </span>
+            </td>
+            <td>${targetDate}</td>
+            <td>${requiredHours} Hours</td>
+            <td>${dailyHours} Hours</td>
+            <td class="${statusClass}">
+                ${status}
+            </td>
+        </tr>
+        `;
+    });
+}
+
+/* Generate first plan automatically */
+generatePlan();
+
+</script>
+
+</body>
+</html>

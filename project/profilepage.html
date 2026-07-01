@@ -1,0 +1,231 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Study Planner - Profile</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    display:flex;
+    background:#f4f7fc;
+}
+
+/* Sidebar */
+.sidebar{
+    width:250px;
+    height:100vh;
+    background:#1e3a8a;
+    color:white;
+    position:fixed;
+    padding:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.menu{
+    list-style:none;
+}
+
+
+.menu li{
+    padding:15px;
+    margin:10px 0;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.menu li:hover{
+    color:#dbeafe;
+    transform:translateX(5px);
+}
+
+
+
+/* Main Content */
+.main{
+    margin-left:270px;
+    width:100%;
+    padding:30px;
+}
+
+.heading{
+    color:#1e3a8a;
+    margin-bottom:20px;
+}
+
+/* Profile Card */
+.profile-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom:25px;
+}
+
+.profile-img{
+    width:90px;
+    height:90px;
+    background:#dbeafe;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:45px;
+}
+
+.profile-info h2{
+    color:#1e3a8a;
+    margin-bottom:8px;
+}
+
+.profile-info p{
+    margin:5px 0;
+    color:#555;
+}
+
+/* Personal Information */
+.details{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom:25px;
+}
+
+.details h2{
+    color:#1e3a8a;
+    margin-bottom:15px;
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.info-row:last-child{
+    border-bottom:none;
+}
+
+/* Achievements */
+.achievement{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.achievement h2{
+    color:#1e3a8a;
+    margin-bottom:15px;
+}
+
+.badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.badge{
+    background:#dbeafe;
+    color:#1e3a8a;
+    padding:12px 18px;
+    border-radius:30px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <div class="logo">
+        📚 Smart Study Planner
+    </div>
+
+    <ul class="menu">
+        <li onclick="location.href='dash.html'">🏠 Dashboard</li>
+        <li onclick="location.href='add.html'">📖 Subjects</li>
+        <li onclick="location.href='page.html'">📝 Study Plan</li>
+        <li onclick="location.href='studysession.html'">⏱️ Study Session</li>
+        <li onclick="location.href='progresstraker.html'">📈 Progress</li>
+        <li onclick="location.href='profilepage.html'">👤 Profile</li>
+        <li onclick="location.href='logout_page.html'">🚪 Logout</li>
+    </ul>
+</div>
+
+<div class="main">
+
+    <h1 class="heading">My Profile</h1>
+
+    <div class="profile-card">
+        <div class="profile-img">
+            👩
+        </div>
+
+        <div class="profile-info">
+            <h2>Pratiksha Patil</h2>
+            <p>🎓 Computer Engineering Student</p>
+            <p>📧 pratiksha@gmail.com</p>
+            <p>📍 Nashik, Maharashtra</p>
+        </div>
+    </div>
+
+    <div class="details">
+        <h2>Personal Information</h2>
+
+        <div class="info-row">
+            <strong>Full Name</strong>
+            <span>Pratiksha Patil</span>
+        </div>
+
+        <div class="info-row">
+            <strong>Email</strong>
+            <span>pratiksha@gmail.com</span>
+        </div>
+
+        <div class="info-row">
+            <strong>Course</strong>
+            <span>Computer Engineering</span>
+        </div>
+
+        <div class="info-row">
+            <strong>College</strong>
+            <span>XYZ College of Engineering</span>
+        </div>
+    </div>
+
+    <div class="achievement">
+        <h2>Achievements</h2>
+
+        <div class="badges">
+            <div class="badge">🏆 Consistent Learner</div>
+            <div class="badge">📚 Study Master</div>
+            <div class="badge">🔥 Active Student</div>
+            <div class="badge">⭐ Goal Achiever</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+```

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Study Planner Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#A8D5E3,#F2F0EA);
+    min-height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    position:fixed;
+    width:250px;
+    height:100vh;
+    background:#1E3A5F;
+    color:white;
+    padding-top:20px;
+}
+
+.logo{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:30px;
+    color:#fff;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    padding:15px 25px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.menu li:hover,
+.menu li.active{
+    background:#A8D5E3;
+    color:#1E3A5F;
+    border-left:5px solid #FF78AC;
+}
+
+.menu li i{
+    margin-right:10px;
+}
+
+/* Main Content */
+
+.main{
+    margin-left:250px;
+    padding:25px;
+}
+
+/* Top Bar */
+
+.topbar{
+    background:white;
+    border-radius:15px;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.profile img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+.profile-name{
+    font-weight:600;
+}
+
+/* Welcome Section */
+
+.welcome{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.welcome h1{
+    color:#1E3A5F;
+}
+
+.welcome p{
+    color:gray;
+}
+
+/* Cards */
+
+.cards{
+display: flex;
+gap: 30px;
+margin-top: 25px;
+}
+
+.card{
+flex: 1;
+background: #fff;
+padding: 35px;
+border-radius: 20px;
+text-align: center;
+box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+transition: 0.3s;
+}
+
+.card:hover{
+transform: translateY(-5px);
+}
+
+.card h3{
+font-size: 24px;
+color: #123e8b;
+margin-bottom: 15px;
+}
+
+.card p{
+font-size: 42px;
+font-weight: bold;
+color: #0b4ea3;
+}
+
+
+/* Dashboard Grid */
+
+.dashboard-grid{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.box{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+.box h2{
+    color:#1E3A5F;
+    margin-bottom:15px;
+}
+
+/* Progress */
+
+.progress-circle{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:conic-gradient(
+        #6BCB77 0% 65%,
+        #e6e6e6 65% 100%
+    );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+}
+
+.inner-circle{
+    width:110px;
+    height:110px;
+    background:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:bold;
+    color:#1E3A5F;
+}
+
+/* Deadlines */
+
+.deadline{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+    padding-bottom:10px;
+    border-bottom:1px solid #eee;
+}
+
+.deadline span{
+    color:#FF78AC;
+    font-weight:600;
+}
+
+/* Today's Plan */
+
+.plan{
+    margin-top:20px;
+}
+
+.plan table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.plan th{
+    background:#A8D5E3;
+    color:#1E3A5F;
+}
+
+.plan th,
+.plan td{
+    padding:12px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+.status{
+    background:#B8E6C8;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+/* Motivation */
+
+.motivation{
+    margin-top:20px;
+    background:#B8E6C8;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+}
+
+.motivation p{
+    font-style:italic;
+    color:#1E3A5F;
+}
+
+@media(max-width:900px){
+
+.dashboard-grid{
+    grid-template-columns:1fr;
+}
+
+.sidebar{
+    width:200px;
+}
+
+.main{
+    margin-left:200px;
+}
+}
+
+@media(max-width:700px){
+
+.sidebar{
+    display:none;
+}
+
+.main{
+    margin-left:0;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        📚 Smart Study Planner
+    
+    </div>
+
+    <ul class="menu">
+        <li onclick="location.href='dash.html'">🏠 Dashboard</li>
+        <li onclick="location.href='add.html'">📖 Subjects</li>
+
+        <li onclick="location.href='page.html'">📝 Study Plan</li>
+        <li onclick="location.href='studysession.html'">⏱️ Study Session</li>
+        <li onclick="location.href='progresstraker.html'">📈 Progress</li>  
+        <li onclick="location.href='profilepage.html'">👤 Profile</a>     
+        <li onclick="location.href='logout_page.html'">🚪 Logout</li>
+    </ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main">
+
+    <!-- Topbar -->
+
+    <div class="topbar">
+        <h2>Dashboard</h2>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/45" alt="">
+            <div class="profile-name">Pratiksha</div>
+        </div>
+    </div>
+
+    <!-- Welcome -->
+
+    <div class="welcome">
+        <h1>Hello, Pratiksha 👋</h1>
+        <p>Let's achieve your study goals today!</p>
+       
+    </div>
+
+    <!-- Stats Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Subjects</h3>
+            <p>5</p>
+        </div>
+
+       
+
+       
+
+       <div class="card">
+         <h3>Today's Study Hours</h3>
+          <p>7h</p>
+       </div>
+
+    </div>
+
+    <!-- Dashboard Grid -->
+
+    <div class="dashboard-grid">
+
+        <!-- Progress -->
+
+        <div class="box">
+
+            <h2>Study Progress</h2>
+
+            <div class="progress-circle">
+                <div class="inner-circle">
+                    65%
+                </div>
+            </div>
+
+            <br>
+
+            <div class="plan">
+                <h2>Today's Plan</h2>
+
+                <table>
+                    <tr>
+                        <th>Time</th>
+                        <th>Subject</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>09:00 AM</td>
+                        <td>DBMS</td>
+                        <td><span class="status">In Progress</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>12:00 PM</td>
+                        <td>OOP</td>
+                        <td><span class="status">Upcoming</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>04:00 PM</td>
+                        <td>Data Structures</td>
+                        <td><span class="status">Upcoming</span></td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Deadlines -->
+
+        <div>
+
+            <div class="box">
+                <h2>Upcoming Deadlines</h2>
+
+                <div class="deadline">
+                    <p>DBMS Assignment</p>
+                    <span>2 Days</span>
+                </div>
+
+                <div class="deadline">
+                    <p>OOP Practical</p>
+                    <span>5 Days</span>
+                </div>
+
+                <div class="deadline">
+                    <p>DSA Project</p>
+                    <span>10 Days</span>
+                </div>
+
+            </div>
+
+            <div class="motivation">
+                <h2>Motivation</h2>
+                <br>
+                <p>
+                    "The secret of getting ahead is getting started."
+                </p>
+                <br>
+                <strong>— Mark Twain</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

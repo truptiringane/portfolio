@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Session</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#d7eef8;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.study-session{
+    width:900px;
+    background:#fff;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Header */
+.header{
+    background:#184a92;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.header h1{
+    font-size:36px;
+    font-weight:700;
+}
+
+/* Content */
+.content{
+    padding:40px;
+}
+
+/* Subject */
+.subject-box{
+    background:#f5f8fc;
+    border-left:6px solid #184a92;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:30px;
+}
+
+.subject-box h2{
+    color:#184a92;
+    font-size:28px;
+}
+
+/* Study Stats */
+.study-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:35px;
+}
+
+.stat-card{
+    background:#ffffff;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    border-top:5px solid #184a92;
+}
+
+.stat-card h3{
+    color:#184a92;
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.stat-card p{
+    font-size:28px;
+    font-weight:bold;
+    color:#222;
+}
+
+/* Timer */
+.timer-section{
+    text-align:center;
+    margin:40px 0;
+}
+
+.timer-title{
+    color:#184a92;
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.timer{
+    font-size:70px;
+    font-weight:bold;
+    color:#184a92;
+    letter-spacing:5px;
+}
+
+/* Status */
+.status{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.status span{
+    background:#e8f4ff;
+    color:#184a92;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    font-size:18px;
+}
+
+/* Buttons */
+.controls{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    padding:15px 35px;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.start{
+    background:#4CAF50;
+    color:white;
+}
+
+.pause{
+    background:#FFC107;
+    color:black;
+}
+
+.stop{
+    background:#F44336;
+    color:white;
+}
+
+/* Quote */
+.quote{
+    background:#184a92;
+    color:white;
+    text-align:center;
+    padding:25px;
+    border-radius:18px;
+}
+
+.quote h3{
+    margin-bottom:10px;
+}
+
+.quote p{
+    font-size:18px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+.study-stats{
+    grid-template-columns:1fr;
+}
+
+.timer{
+    font-size:45px;
+}
+
+.header h1{
+    font-size:28px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="study-session">
+
+    <div class="header">
+        <h1>📚 Study Session</h1>
+    </div>
+
+    <div class="content">
+
+        <!-- Subject -->
+        <div class="subject-box">
+            <h2>Subject : DBMS</h2>
+        </div>
+
+        <!-- Stats -->
+        <div class="study-stats">
+
+            <div class="stat-card">
+                <h3>Daily Target</h3>
+                <p>4 Hours</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Completed Today</h3>
+                <p>2h 30m</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Remaining</h3>
+                <p>1h 30m</p>
+            </div>
+
+        </div>
+
+        <!-- Timer -->
+        <div class="timer-section">
+            <div class="timer-title">Current Session Time</div>
+            <div class="timer">01 : 25 : 30</div>
+        </div>
+
+        <!-- Status -->
+        <div class="status">
+            <span>🟢 Running</span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="controls">
+            <button class="btn start">▶ Start</button>
+            <button class="btn pause">⏸ Pause</button>
+            <button class="btn stop">⏹ Stop</button>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote">
+            <h3>💡 Stay Focused!</h3>
+            <p>Success is the sum of small efforts repeated day after day.</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

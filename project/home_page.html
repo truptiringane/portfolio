@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Study Planner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f7fbff;
+    color:#1f2d3d;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    width:100%;
+    background:#ffffff;
+    padding:18px 8%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.logo{
+    font-size:34px;
+    font-weight:700;
+    color:#0b3b80;
+    letter-spacing:0.5px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    position:relative;
+    padding:4px 6px;
+    text-shadow:0 1px 0 rgba(11,59,128,0.08);
+}
+
+.logo .logo-icon{
+    font-size:30px;
+    line-height:1;
+    transform:translateY(-2px);
+}
+
+.logo span{
+    color:#63b3ff;
+}
+
+.logo .logo-text{
+    position:relative;
+}
+
+.logo .logo-text:after{
+    content:'';
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-6px;
+    height:3px;
+    border-radius:3px;
+    background:linear-gradient(90deg,#0b3b80,#63b3ff);
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero{
+    width:100%;
+    min-height:75vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:60px 8%;
+    background:#ffffff;
+}
+
+.hero-text{
+    width:50%;
+}
+
+.hero-text h1{
+    font-size:58px;
+    color:#0d2f66;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:#5e6d7d;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.btn1{
+    display:inline-block;
+    background:#0b3b80;
+    color:white;
+    padding:14px 32px;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn1:hover{
+    background:#072d64;
+}
+
+/* ================= HERO ILLUSTRATION ================= */
+
+.hero-image{
+    width:45%;
+    display:flex;
+    justify-content:center;
+}
+
+.illustration{
+    width:420px;
+    height:320px;
+    position:relative;
+}
+
+.bg-circle{
+    width:280px;
+    height:280px;
+    background:#edf4ff;
+    border-radius:50%;
+    position:absolute;
+    top:20px;
+    left:70px;
+}
+
+.clock{
+    width:50px;
+    height:50px;
+    border:4px solid #203864;
+    border-radius:50%;
+    position:absolute;
+    top:20px;
+    right:90px;
+}
+
+.clock:before{
+    content:'';
+    width:3px;
+    height:15px;
+    background:#203864;
+    position:absolute;
+    top:7px;
+    left:20px;
+}
+
+.clock:after{
+    content:'';
+    width:13px;
+    height:3px;
+    background:#203864;
+    position:absolute;
+    top:22px;
+    left:20px;
+}
+
+.note1{
+    width:75px;
+    height:60px;
+    background:#ffe9b5;
+    position:absolute;
+    top:70px;
+    left:60px;
+    border-radius:10px;
+    transform:rotate(-10deg);
+}
+
+.note2{
+    width:75px;
+    height:55px;
+    background:#8cc0ff;
+    position:absolute;
+    top:70px;
+    right:30px;
+    border-radius:10px;
+}
+
+.head{
+    width:50px;
+    height:50px;
+    background:#ffd8b5;
+    border-radius:50%;
+    position:absolute;
+    top:95px;
+    left:180px;
+}
+
+.body{
+    width:95px;
+    height:85px;
+    background:#66c46d;
+    border-radius:20px;
+    position:absolute;
+    top:135px;
+    left:158px;
+}
+
+.laptop{
+    width:170px;
+    height:95px;
+    background:#344b91;
+    position:absolute;
+    bottom:45px;
+    left:120px;
+    border-radius:10px;
+}
+
+.laptop:after{
+    content:'';
+    width:210px;
+    height:10px;
+    background:#715fd2;
+    position:absolute;
+    left:-20px;
+    bottom:-12px;
+    border-radius:10px;
+}
+
+.plant{
+    width:18px;
+    height:40px;
+    background:#69c37a;
+    position:absolute;
+    right:20px;
+    bottom:50px;
+    border-radius:10px;
+}
+
+.plant:after{
+    content:'';
+    width:35px;
+    height:18px;
+    background:#69c37a;
+    position:absolute;
+    left:-10px;
+    top:-10px;
+    border-radius:50%;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    padding:60px 8%;
+    background:#ffffff;
+    border-top:1px solid #ececec;
+}
+
+.feature-box{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.card{
+    text-align:center;
+}
+
+.icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.green{
+    background:#dff8e5;
+}
+
+.blue{
+    background:#dff2ff;
+}
+
+.yellow{
+    background:#fff3d8;
+}
+
+.orange{
+    background:#ffe7da;
+}
+
+.card h3{
+    color:#17396b;
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.card p{
+    color:#67778b;
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonial{
+    padding:70px 8%;
+    background:#f8fbff;
+}
+
+.testimonial h2{
+    text-align:center;
+    font-size:36px;
+    color:#16396c;
+    margin-bottom:40px;
+}
+
+.review-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.review{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.star{
+    color:gold;
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.review p{
+    color:#5e6d7d;
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.review h4{
+    color:#0d2f66;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0b3b80;
+    color:white;
+    text-align:center;
+    padding:36px 18px;
+    font-size:20px;
+    font-weight:500;
+    letter-spacing:0.3px;
+    line-height:1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero-text,
+.hero-image{
+    width:100%;
+}
+
+.hero-image{
+    margin-top:40px;
+}
+
+.feature-box,
+.review-container{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-text h1{
+    font-size:42px;
+}
+
+.feature-box,
+.review-container{
+    grid-template-columns:1fr;
+}
+
+footer{
+    font-size:16px;
+    padding:28px 14px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">
+        <span class="logo-text">Smart <span>Study Planner</span></span>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+
+    <div class="hero-text">
+        <h1>
+            Plan Smart.<br>
+            Study Better.<br>
+            Achieve More.
+        </h1>
+
+        <p>
+            Smart Study Planner helps you organize your subjects,
+            manage deadlines and track your progress with smart
+            recommendations.
+        </p>
+
+        <a href="Smart Study Planner - Login.html" class="btn1">Get Started</a>
+        
+    </div>
+
+    <div class="hero-image">
+        <div class="illustration">
+            <div class="bg-circle"></div>
+            <div class="clock"></div>
+            <div class="note1"></div>
+            <div class="note2"></div>
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="laptop"></div>
+            <div class="plant"></div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Features -->
+<section class="features">
+
+    <div class="feature-box">
+
+        <div class="card">
+            <div class="icon green">📚</div>
+            <h3>Smart Study Plan</h3>
+            <p>
+                Generate personalized study plans based on your goals
+                and available time.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon blue">📈</div>
+            <h3>Track Progress</h3>
+            <p>
+                Track completed hours and monitor your study progress
+                easily.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon yellow">📝</div>
+            <h3>Manage Subjects</h3>
+            <p>
+                Add, edit and organize your subjects and their
+                important deadlines.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon orange">💡</div>
+            <h3>AI Recommendations</h3>
+            <p>
+                Get smart recommendations to improve productivity and
+                study efficiency.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Testimonials -->
+<section class="testimonial">
+
+    <h2>Why Students Love It</h2>
+
+    <div class="review-container">
+
+        <div class="review">
+            <div class="star">★★★★★</div>
+            <p>
+                "This planner helped me stay consistent and improve my
+                scores."
+            </p>
+            <h4>Ananya, B.Tech</h4>
+        </div>
+
+        <div class="review">
+            <div class="star">★★★★★</div>
+            <p>
+                "The study plan and reminders keep me on track every
+                day."
+            </p>
+            <h4>Rohit, BCA</h4>
+        </div>
+
+        <div class="review">
+            <div class="star">★★★★★</div>
+            <p>
+                "Smart recommendations are really helpful before
+                exams."
+            </p>
+            <h4>Sneha, B.Sc</h4>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+<footer>
+    © 2026 Smart Study Planner | Plan Smart • Study Better • Achieve More
+</footer>
+
+</body>
+</html>

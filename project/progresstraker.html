@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://127.0.0.1:5500/progresstrack.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Study Planner - Progress</title>
+
+<link rel="stylesheet" href="./progresstraker_files/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#edf2f8;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+    width:250px;
+    background:linear-gradient(180deg,#032b63,#0b4ea3);
+    color:white;
+    padding:20px 0;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 25px 25px;
+    border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.logo i{
+    font-size:22px;
+}
+
+.logo h2{
+    font-size:18px;
+}
+
+.menu{
+    margin-top:20px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:white;
+    text-decoration:none;
+    padding:14px 25px;
+    transition:.3s;
+}
+
+.menu a:hover,
+.menu .active{
+    background:rgba(255,255,255,.15);
+    border-left:5px solid #9bd1ff;
+}
+
+/* Main */
+.main{
+    flex:1;
+    padding:30px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header h1{
+    color:#123e8b;
+}
+
+.header p{
+    color:#666;
+    margin-top:5px;
+}
+
+select{
+    padding:10px 15px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    outline:none;
+}
+
+/* Table Card */
+.card{
+    background:white;
+    margin-top:25px;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    text-align:left;
+    padding:15px;
+    color:#123e8b;
+    border-bottom:2px solid #eee;
+}
+
+td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+    color:#555;
+}
+
+/* Progress Bar */
+.bar{
+    width:100px;
+    height:8px;
+    background:#ddd;
+    border-radius:10px;
+    overflow:hidden;
+    display:inline-block;
+    margin-right:8px;
+}
+
+.fill{
+    height:100%;
+    background:#4caf50;
+    border-radius:10px;
+}
+
+/* Bottom Cards */
+.bottom{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:20px;
+}
+
+/* Overall Progress */
+.circle-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.circle{
+    width:150px;
+    height:150px;
+    margin:20px auto;
+    border-radius:50%;
+    background:
+    conic-gradient(
+        #4caf50 0% 65%,
+        #e4e4e4 65% 100%
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.circle span{
+    width:110px;
+    height:110px;
+    background:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:bold;
+    color:#123e8b;
+}
+
+.info{
+    text-align:left;
+    margin-top:20px;
+}
+
+.info p{
+    margin:8px 0;
+    color:#555;
+}
+
+.green{
+    color:#4caf50;
+}
+
+/* Chart */
+.chart-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.chart{
+    height:250px;
+    position:relative;
+    margin-top:20px;
+    border-left:2px solid #ccc;
+    border-bottom:2px solid #ccc;
+}
+
+.line{
+    position:absolute;
+    width:80%;
+    height:3px;
+    background:#4caf50;
+    top:55%;
+    left:10%;
+    transform:rotate(-15deg);
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    background:#4caf50;
+    border-radius:50%;
+    position:absolute;
+}
+
+.d1{bottom:35px; left:40px;}
+.d2{bottom:60px; left:110px;}
+.d3{bottom:90px; left:180px;}
+.d4{bottom:120px; left:250px;}
+.d5{bottom:150px; left:320px;}
+.d6{bottom:170px; left:390px;}
+
+.date{
+    position:absolute;
+    bottom:-25px;
+    color:#666;
+    font-size:12px;
+}
+
+.dates{
+    display:flex;
+    justify-content:space-around;
+    margin-top:15px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+
+.sidebar{
+    width:80px;
+}
+
+.logo h2,
+.menu span{
+    display:none;
+}
+
+.menu a{
+    justify-content:center;
+}
+
+.bottom{
+    grid-template-columns:1fr;
+}
+
+table{
+    font-size:12px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<div class="logo">
+<i class="fa-solid fa-book-open"></i>
+<h2>Smart Study Planner</h2>
+</div>
+
+<div class="menu">
+
+<a href="http://127.0.0.1:5500/dash.html#"><i class="fa-solid fa-table-columns"></i><span>🏠 Dashboard</span></a>
+
+<a href="http://127.0.0.1:5500/add.html#"><i class="fa-solid fa-book"></i><span>📖 Subjects</span></a>
+
+<a href="http://127.0.0.1:5500/page.html#"><i class="fa-solid fa-calendar"></i><span>📝 Study Plan</span></a>
+ <a href="studysession.html">
+    <i class="fa-solid fa-clock"></i>
+    <span>⏱️ Study Session</span>
+</a>
+
+<a class="active" href="http://127.0.0.1:5500/progresstraker.html#">
+<i class="fa-solid fa-chart-line"></i>
+<span>📈 Progress</span>
+</a>
+
+
+
+<a href="http://127.0.0.1:5500/profilepage.html#"><i class="fa-solid fa-user"></i><span>👤 Profile</span></a>
+
+
+
+<a href="http://127.0.0.1:5500/logout_page.html#"><i class="fa-solid fa-right-from-bracket"></i>🚪 Logout<span></span></a>
+
+</div>
+
+</div>
+
+
+<!-- Main Content -->
+
+<div class="main">
+
+<div class="header">
+
+<div>
+<h1>Progress Tracking</h1>
+<p>Track your completed and remaining study hours.</p>
+</div>
+
+<select>
+<option>All Subjects</option>
+<option>DBMS</option>
+<option>OOP</option>
+<option>Data Structures</option>
+</select>
+
+</div>
+
+
+<div class="card">
+
+<table>
+
+<tbody><tr>
+<th>Subject</th>
+<th>Required</th>
+<th>Completed</th>
+<th>Remaining</th>
+<th>Progress</th>
+</tr>
+
+<tr>
+<td>DBMS</td>
+<td>8h</td>
+<td>6h</td>
+<td>2h</td>
+<td>
+<div class="bar">
+<div class="fill" style="width:75%"></div>
+</div>75%
+</td>
+</tr>
+
+<tr>
+<td>OOP</td>
+<td>6h</td>
+<td>3h</td>
+<td>3h</td>
+<td>
+<div class="bar">
+<div class="fill" style="width:50%"></div>
+</div>50%
+</td>
+</tr>
+
+<tr>
+<td>Data Structures</td>
+<td>6h</td>
+<td>4h</td>
+<td>2h</td>
+<td>
+<div class="bar">
+<div class="fill" style="width:67%"></div>
+</div>67%
+</td>
+</tr>
+
+<tr>
+<td>Digital Techniques</td>
+<td>4h</td>
+<td>2h</td>
+<td>2h</td>
+<td>
+<div class="bar">
+<div class="fill" style="width:50%"></div>
+</div>50%
+</td>
+</tr>
+
+</tbody></table>
+
+</div>
+
+
+<div class="bottom">
+
+<div class="circle-card">
+
+<h3>Overall Progress</h3>
+
+<div class="circle">
+<span>65%</span>
+</div>
+
+<div class="info">
+<p class="green">● Completed Hours: 16.25h</p>
+<p>● Remaining Hours: 8.75h</p>
+<p><strong>Total Hours: 25h</strong></p>
+</div>
+
+</div>
+
+
+<div class="chart-card">
+
+<h3>Progress Over Time</h3>
+
+<div class="chart">
+
+<div class="line"></div>
+
+<div class="dot d1"></div>
+<div class="dot d2"></div>
+<div class="dot d3"></div>
+<div class="dot d4"></div>
+<div class="dot d5"></div>
+<div class="dot d6"></div>
+
+</div>
+
+<div class="dates">
+<span>May 16</span>
+<span>May 18</span>
+<span>May 20</span>
+<span>May 22</span>
+<span>May 24</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
